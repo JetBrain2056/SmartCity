@@ -1,0 +1,120 @@
+:root{
+	--bs-nav-link-color: #00ff93;
+	--bs-btn-active-bg: #282c34;
+}
+*, *::after, *::before{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {	
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	  sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;	
+	font-size: 13px;		
+}
+
+.content {		
+	height: 100vh
+}
+
+a, .nav-link{
+	color: aquamarine;	
+}
+.input-group{
+	align-items: center;
+}
+header {
+	background-color: #282c34;	
+	font-size: 16px;
+}
+
+footer {
+	color: aquamarine;
+	background-color: #282c34;	
+}
+
+.form-signin {
+	max-width: 400px;
+}
+.form-signin .checkbox {
+	font-weight: 600;
+}
+
+.form-signin .form-control {
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px;
+	font-size: 16px;
+	
+}
+.input-group-text{
+	color:LightSlateGray;
+	
+}
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+a:hover{
+	color: #00ff93;
+	transition: all .3s linear;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: auto;
+	margin-bottom: unset;	
+}
+.sidebar{
+	background: #282c34;
+	outline-color: aquamarine;
+}
+.row{
+	--bs-gutter-x: 0;
+}
+
+.menu-title{
+	color: aquamarine;
+}
+.nav-link{
+	border: 1px solid transparent;
+}
+.nav-link:hover,
+.btn:hover,
+.btn:focus{
+	color: #00ff93 !important;
+	border: 1px solid #00ff92 !important;
+	border-radius: 8px;
+	transition: all .2s linear;
+}
+.btn-primary:hover{
+
+	background-color: #282c34  !important;
+	border-color: aquamarine !important;
+	transition: all .2s linear;
+}
+.btn-primary{
+	color: aquamarine !important;
+	background-color: #282c34;
+	border-color: #282c34;
+	--bs-btn-active-bg: #282c34;
+}
+.sidebar{
+	background-color: #282c34;
+}
+.dropdown-menu{
+	background-color: #282c34;
+	color: #58fcb8 !important;
+}
+.dropdown-item{
+	color: #58fcb8;
+}
+.dropdown-item:active{
+	background-color: #26282f;
+}

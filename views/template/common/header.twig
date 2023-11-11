@@ -1,0 +1,92 @@
+<header id="header" class="navbar navbar-dark navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ home }}">{{ name }}</a>
+    {% if logged %}
+      <nav class="d-flex me-lg-5">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="nav navbar-nav align-items-center gap-2" id="nav-tab" role="tablist">                              
+            <li class="nav-item">
+                <a class="nav-link active"  href="" id="nav-osm-tab" data-bs-toggle="tab" data-bs-target="#nav-osm"  role="tab" aria-controls="nav-osm" aria-selected="false">
+                  OSM
+                </a>
+            </li>   
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                  Справочники
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">                 
+                  <div class="nav-item flex-column" aria-orientation="vertical">                                      
+                    <button class="dropdown-item" id="nav-objects-tab"  data-bs-toggle="tab" data-bs-target="#nav-objects"  type="button" role="tab" aria-controls="nav-objects"  aria-selected="false" onclick="show_object_table()">Объекты</button>
+                    <button class="dropdown-item" id="nav-units-tab"    data-bs-toggle="tab" data-bs-target="#nav-units"    type="button" role="tab" aria-controls="nav-units"    aria-selected="false" onclick="show_unit_table()">Устройства</button>                    
+                    <button class="dropdown-item" id="nav-edges-tab"    data-bs-toggle="tab" data-bs-target="#nav-edges"    type="button" role="tab" aria-controls="nav-edges"    aria-selected="false" onclick="show_cable_table()">Линии связи </button>                    
+                    <button class="dropdown-item" id="nav-config-tab"   data-bs-toggle="tab" data-bs-target="#nav-config"   type="button" role="tab" aria-controls="nav-config"   aria-selected="false" onclick="show_config_table()">Лог устройств </button>                    
+                  </div>        
+                </ul>
+              </li>      
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                Администрирование
+              </a>                          
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">    
+                <div class="nav-item flex-column" aria-orientation="vertical">
+                  <button class="dropdown-item" id="nav-users-tab" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users" aria-selected="false" onclick="show_user_table()">
+                    {{ text_users }}
+                  </button>                    
+                  <button class="dropdown-item" id="nav-roles-tab" data-bs-toggle="tab" data-bs-target="#nav-roles" type="button"  role="tab" aria-controls="nav-roles" aria-selected="false" onclick="show_role_table()">
+                    Роли
+                  </button>                                                   
+                </div>
+              </ul>              
+            </li>                    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Справка</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Информация</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">О программе...</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex gap-1 align-items-center" aria-current="page">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>{{ username }}</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{{ logout }}"><i class="fa fa-sign-out"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    {% endif %}
+  </div>
+</header>
+{# //////Modal////// #}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ about_program }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        Developer EVA
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ button_close }}</button>
+      </div>
+    </div>
+  </div>
+</div>

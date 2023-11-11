@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang={{ lang }}>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="height=device-height, width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+        <title>EVA</title>                            
+        <script defer src="./common.js"></script>
+        <script defer src="./@popperjs/core/dist/umd/popper.min.js"></script>
+        <script defer src="./js/bootstrap.min.js"></script>
+        <script defer src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>            
+
+        <!-- Подключение библиотеки Chart.js -->
+        {# <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>          #}
+        <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>      
+
+        {# <link rel="icon" type="image/x-icon" href="{{ shortIcon }}"> #}
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="./stylesheet/stylesheet.css" rel="stylesheet">        
+        <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    </head>
+    <body>             
+        <div class="content d-flex flex-column"> 
+            {% include "./template/common/header.twig" %}  
+            {% if logged %}                             
+                <div class="d-flex flex-row flex-grow-1">                    
+                    {# <div class="col-2 sidebar" style="overflow-y: scroll">
+                        {% include "./template/common/column_left.twig" %}
+                    </div> #}
+                    <div class="col">
+                        {% include "./template/common/dashboard.twig" %}
+                    </div>                    
+                </div>                             
+            {% else %}                            
+                {% include "./template/common/login.twig" %}                            
+            {% endif %}   
+            {% include "./template/common/footer.twig" %}  
+        </div>
+    </body>
+</html>

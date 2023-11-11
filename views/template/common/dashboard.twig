@@ -1,0 +1,401 @@
+<div class="tab-content" id="nav-tabContent">
+    {# OSM #}
+    <div class="tab-pane fade active show" id="nav-osm" role="tabpanel" aria-labelledby="nav-osm-tab">                        
+      <div id="osm-map"></div>
+    </div> 
+    {# Users [0] #}
+    <div class="tab-pane fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#usersModal">
+            <i class="fa fa-user-plus"></i>
+            <span>{{ button_add }}</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center eva-edit" data-bs-toggle="modal" data-bs-target="#userEditModal" onclick="user_edit_modal()">
+            <i class="fa fa-edit"></i>
+            <span>{{ button_edit }}</span>
+          </button>
+          {# <button type="button" class="btn btn-primary d-flex gap-2 align-items-center">
+            <i class="fa fa-clone" aria-hidden="true"></i>
+            <span>{{ button_copy }}</span>
+          </button> #}
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="user_delete()">
+            <i class="fa fa-user-times"></i>
+            <span>{{ button_delete }}</span>
+          </button>
+          <div class="btn-group btn-group-sm" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <li><a class="dropdown-item d-flex gap-2 align-items-center"><i class="fa fa-refresh"></i>{{ button_update }}</a></li>
+              <li><a class="dropdown-item">{{ button_etc}}</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item">...</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>           
+      <div class="eva-form"></div>      
+    </div>    
+    {# Roles [1] #}
+    <div class="tab-pane fade" id="nav-roles" role="tabpanel" aria-labelledby="nav-roles-tab">
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#roleModal">
+            <i class="fa fa-plus-square"></i>
+            <span>{{ button_add }}</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="role_delete()">
+            <i class="fa fa-minus-square"></i>
+            <span>{{ button_delete }}</span>
+          </button>
+        </div>
+      </div>           
+      <div class="eva-form"></div>  
+    </div>
+    {# Objects [2] #}
+    <div class="tab-pane fade" id="nav-objects" role="tabpanel" aria-labelledby="nav-objects-tab"  tabindex="0">
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#objectsModal">
+            <i class="fa fa-pencil-square"></i>
+            <span>Редактировать</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="object_delete()">
+            <i class="fa fa-minus-square"></i>
+            <span>{{ button_delete }}</span>
+          </button>
+        </div>
+      </div>
+      <div class="eva-form"></div>
+    </div>
+    {# Units [3] #}
+    <div class="tab-pane fade" id="nav-units" role="tabpanel" aria-labelledby="units-tab" tabindex="0">      
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#unitModal">
+            <i class="fa fa-plus-square"></i>
+            <span>{{ button_add }}</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center eva-edit" data-bs-toggle="modal" data-bs-target="#unitEditModal" onclick="unit_modal()">
+            <i class="fa fa-pencil-square "></i>
+            <span>Редактировать</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="unit_delete()">
+            <i class="fa fa-minus-square"></i>
+            <span>{{ button_delete }}</span>
+          </button>        
+        </div>
+      </div>  
+      <div class="eva-form"></div>         
+    </div>  
+    {# Edges [4] #}
+    <div class="tab-pane fade" id="nav-edges" role="tabpanel" aria-labelledby="edges-tab" tabindex="0">      
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#cableEditModal" onclick="cable_modal()">
+            <i class="fa fa-pencil-square "></i>
+            <span>Редактировать</span>
+          </button>
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="cable_delete()">
+            <i class="fa fa-minus-square"></i>
+            <span>{{ button_delete }}</span>
+          </button>        
+        </div>
+      </div>  
+      <div class="eva-form"></div>          
+    </div> 
+    {# Config [5] #}
+    <div class="tab-pane fade" id="nav-config" role="tabpanel" aria-labelledby="config-tab" tabindex="0">      
+      <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">
+        <div class="btn-group btn-group-sm" role="group">
+          {# <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#cableEditModal" onclick="cable_modal()">
+            <i class="fa fa-pencil-square "></i>
+            <span>Редактировать</span>
+          </button> #}
+          <button type="button" class="btn btn-primary d-flex gap-2 align-items-center" onclick="config_delete()">
+            <i class="fa fa-minus-square"></i>
+            <span>{{ button_delete }}</span>
+          </button>        
+        </div>
+      </div>  
+      <div class="eva-form"></div>          
+    </div> 
+</div>  
+
+{# Modal User #}
+<div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="usersModalLabel">{{ text_addusers }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form" id="create-user-form">
+          <label for="input-username">Name:</label>
+          <div class="input-group">
+            <input type="text" placeholder="Name" id="input-username" class="form-control"/>
+          </div>
+          <label for="input-descr">Descr:</label>
+          <div class="input-group">
+            <input type="text" placeholder="Full name" id="input-descr" class="form-control"/>
+          </div>
+          <label for="input-role">Role:</label>
+          <div class="input-group">            
+            <input type="text" id="input-role" class="form-control"/>
+            <button class="btn btn-outline-secondary" type="button" onclick="user_edit_role()">...</button>
+          </div>
+          <label for="input-email">E-mail:</label>
+          <div class="input-group">            
+            <input type="email" placeholder="email@example.com" id="input-email" class="form-control"/>
+          </div>
+          <label for="input-password">Password:</label>
+          <div class="input-group">
+            <input type="password" placeholder="Password" id="input-password" class="form-control"/>
+          </div>
+          <label for="input-confirmpass">Confirm password:</label>
+          <div class="input-group">
+            <input type="password" placeholder="Password" id="input-confirmpass" class="form-control"/>
+          </div>
+          <label for="input-eauth">Show user:</label>
+          <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="input-show" checked/>
+          </div>
+          <label for="input-eauth">Enterprise auth:</label>
+          <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="input-eauth" checked/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="user_create()">{{ button_save }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal User Edit #}
+<div class="modal fade" id="userEditModal" tabindex="-1" aria-labelledby="userEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userEditModalLabel">Редактировать пользователя</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form" id="create-edit-form">
+          <label for="input-edit-username">Name:</label>
+          <div class="input-group">
+            <input type="text" placeholder="Name" id="input-edit-username" class="form-control"/>
+          </div>
+          <label for="input-edit-descr">Descr:</label>
+          <div class="input-group">
+            <input type="text" placeholder="Full name" id="input-edit-descr" class="form-control"/>
+          </div>
+          <label for="input-edit-role">Role:</label>
+          <div class="input-group">            
+            <input type="text" id="input-edit-role" class="form-control"/>
+            <button class="btn btn-outline-secondary" type="button" onclick="user_edit_role()">...</button>
+          </div>
+          <label for="input-edit-email">E-mail:</label>
+          <div class="input-group">
+            <input type="email" placeholder="email@example.com" id="input-edit-email" class="form-control"/>
+          </div>
+          <label for="input-edit-password">Password:</label>
+          <div class="input-group">
+            <input type="password" placeholder="Password" id="input-edit-password" class="form-control"/>
+          </div>
+          <label for="input-edit-confirmpass">Confirm password:</label>
+          <div class="input-group">
+            <input type="password" placeholder="Password" id="input-edit-confirmpass" class="form-control"/>
+          </div>
+          <label for="input-edit-show">Show user:</label>
+          <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="input-edit-show" checked/>
+          </div>
+          <label for="input-edit-eauth">Enterprise auth:</label>
+          <div class="form-group">
+            <input type="checkbox" class="form-check-input" name="eauth" id="input-edit-eauth" checked/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="user_edit()">{{ button_save }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal Edit User Role [6] #}
+<div class="modal modal-lg fade" id="editUserRoleModal" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Выбор роли</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">          
+        <div class="btn-toolbar" role="toolbar" aria-label="toolbar group">          
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-primary d-flex gap-2 align-items-center eva-edit" onclick="role_select()">
+              <i class=""></i>
+              <span>Выбрать</span>
+            </button>    
+          </div>
+        </div>
+        <div class="eva-form"></div>          
+      </div>
+      <div class="modal-footer">        
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div> 
+{# Modal Role #}
+<div class="modal fade" id="roleModal" tabindex="-1" aria-labelledby="roleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="roleModalLabel">Добавить роль</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form" id="create-role-form">
+          <label for="input-rolename">Name:</label>
+          <div class="input-group">
+            <input type="text" placeholder="Name" id="input-rolename" class="form-control"/>
+          </div>                  
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="role_create()">{{ button_save }}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal Unit #}
+<div class="modal fade" id="unitModal" tabindex="-1" aria-labelledby="unitsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="unitsModalLabel">Создание устройства</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+          <form class="form" >              
+            <label for="input-unit-name">Наименование:</label>            
+            <div class="input-group">
+              <input type="text" name="unit" value="" placeholder="Наименование устройства" id="input-unit-name" class="form-control"/>            
+            </div>            
+            <label for="input-init-descr">Описание:</label>
+            <div class="input-group">
+              <input type="text" name="descr" value="" placeholder="(0-9, А-Я)" id="input-unit-descr" class="form-control"/>            
+            </div>  
+            <label for="input-lan">lat:</label>
+            <div class="input-group">
+              <input type="text" name="lat" value="" placeholder="0" id="input-lat" class="form-control"/>            
+            </div>  
+            <label for="input-lon">lon:</label>
+            <div class="input-group">
+              <input type="text" name="lon" value="" placeholder="0" id="input-lon" class="form-control"/>            
+            </div>             
+          </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="unit_create()">{{ button_save }}</button>        
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal edit unit #}
+<div class="modal fade" id="unitEditModal" tabindex="-1" aria-labelledby="unitEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="unitEditModalLabel">Редактирование устройства</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+          <form class="form" >                 
+            <input class="form-control" type="text" id="input-unit-edit-id" disabled hidden>   
+            <label for="input-unit-edit-kod">Код:</label> 
+            <div class="input-group"> 
+              <input class="form-control" type="text" id="input-unit-edit-kod">  
+            </div>
+            <label for="input-unit-edit-parent">Родитель:</label> 
+            <div class="input-group">          
+              <input class="form-control" type="text" id="input-unit-edit-parentId" disabled hidden>    
+              <input class="form-control" type="text" id="input-unit-edit-parentKod" disabled hidden>   
+              <input class="form-control" type="text" id="input-unit-edit-parent" disabled>            
+              <button class="btn btn-outline-secondary" type="button" id="select-unit-edit-parent" onclick="unit_edit_parent()">...</button>
+            </div>  
+            <label for="input-unit-edit-name">Наименование:</label>            
+            <div class="input-group">
+              <input type="text" name="unit" value="" placeholder="Наименование устройства" id="input-unit-edit-name" class="form-control"/>            
+            </div>    
+            <label for="input-unit-edit-descr">Описание:</label>
+            <div class="input-group">              
+              <textarea  class="form-control" id="input-unit-edit-descr" rows="3" maxlength="255" style="resize:true;"></textarea>
+            </div>             
+          </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="unit_edit()">Сохранить</button>        
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal Chart Unit #}
+<div class="modal modal-lg fade" id="unitChartModal" tabindex="-2" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">График устройства</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">          
+          <form class="input-group input-group-sm gap-2">  
+            <div class="btn-group" role="group" data-toggle="buttons">              
+              <input type="radio" class="btn-check" name="btnradio" id="radio_hour" autocomplete="off" checked>     
+              <label class="btn btn-light" for="radio_hour">Час</label>              
+              <input type="radio" class="btn-check" name="btnradio" id="radio_day" autocomplete="off">
+              <label class="btn btn-light" for="radio_day">День</label>              
+              <input type="radio" class="btn-check" name="btnradio" id="radio_month" autocomplete="off">
+              <label class="btn btn-light" for="radio_month">Месяц</label>              
+              <input type="radio" class="btn-check" name="btnradio" id="radio_year" autocomplete="off">
+              <label class="btn btn-light" for="radio_year">Год</label>
+            </div>            
+            <label for="input-startDate">Период с:</label>                 
+            <input class="form-control" type="datetime-local" id="input-startDate">              
+            <label for="input-endDate">по:</label>                        
+            <input class="form-control" type="datetime-local" id="input-endDate"/>                                    
+          </form>   
+          <div>
+              <canvas id="myChart"></canvas>
+          </div>
+      </div>
+      <div class="modal-footer">
+        {# <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="port_edit()">{{ button_save }}</button>         #}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+{# Modal Chart2 Unit #}
+{# <div class="modal modal-lg fade" id="unitChartModal2" tabindex="-2" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">График устройства 2</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">          
+          <div>
+              <canvas id="myChart2"></canvas>
+          </div>
+      </div>
+      <div class="modal-footer">              
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div> #}
